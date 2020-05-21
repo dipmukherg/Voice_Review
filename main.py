@@ -16,10 +16,12 @@ def api_message():
     f = open('./new.wav', 'wb')
     f.write(request.data)
     f.close()
+    #print("Inside Main")
     x,_ = librosa.load('./new.wav', sr=44100)
     sf.write('tmp.wav', x, 44100)
     record.sample_recognize()
     return "File Submitted"
+
 
 if __name__=="__main__":
     app.run(debug=True)

@@ -8,9 +8,10 @@ import base64
 
 
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS']='my-new-project-265705-90a669a5d4c2.json'
-API_KEY="AIzaSyAY4MhK-jid62wSYN80Lj0YSFgI4FpcS8k"
-voice_file='new.wav'
+#os.environ['GOOGLE_APPLICATION_CREDENTIALS']='my-new-project-265705-90a669a5d4c2.json'
+API_KEY="AIzaSyCCm76qtJakFpaI19D37LlBokhdoVdjKwM"
+
+voice_file='output.wav'
 with io.open(voice_file,'rb') as f:
     audio_file = f.read()
 
@@ -22,7 +23,7 @@ def encode_audio(audio):
 #audio = types.RecognitionAudio(content=audio_file)
 data = {
         "audio": {
-            "content": base64.b64encode(audio_file)
+            "content": None
         },
         "config": {
             "enableAutomaticPunctuation": True,

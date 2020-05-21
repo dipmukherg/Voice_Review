@@ -1,4 +1,4 @@
-import pyaudio
+# import pyaudio
 import wave
 import requests
 import os
@@ -9,7 +9,7 @@ from google.cloud.speech_v1 import types
 from array import array
 import requests
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS']='my-new-project-265705-90a669a5d4c2.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS']='vision-project-274805-9ef6e946aa6c.json'
 
 
 
@@ -19,6 +19,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS']='my-new-project-265705-90a669a5d4c2
 
 
 def sample_recognize():
+    #print("Record")
     # CHUNK = 1024
     # FORMAT = pyaudio.paInt16
     # CHANNELS = 2
@@ -73,7 +74,6 @@ def sample_recognize():
     # wf.close()
 
     client = speech_v1.SpeechClient()
-
     # storage_uri = 'gs://cloud-samples-data/speech/multi.wav'
 
     # The number of channels in the input audio file (optional)
@@ -97,6 +97,7 @@ def sample_recognize():
     voice_file='tmp.wav'
     with io.open(voice_file,'rb') as f:
         audio_file = f.read()
+
     
     audio = types.RecognitionAudio(content=audio_file)
     response = client.recognize(config, audio)
