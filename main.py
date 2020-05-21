@@ -11,7 +11,7 @@ def home():
     return render_template('index.html')
 
 
-@app.route('/messages', methods = ['POST'])
+@app.route('/messages', methods = ['POST','GET'])
 def api_message():
     f = open('./new.wav', 'wb')
     f.write(request.data)
@@ -19,8 +19,8 @@ def api_message():
     #print("Inside Main")
     x,_ = librosa.load('./new.wav', sr=44100)
     sf.write('tmp.wav', x, 44100)
-    record.sample_recognize()
-    return "File Submitted"
+    returned_text= record.sample_recognize()
+    return returned_text
 
 
 if __name__=="__main__":

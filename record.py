@@ -101,13 +101,15 @@ def sample_recognize():
     
     audio = types.RecognitionAudio(content=audio_file)
     response = client.recognize(config, audio)
+    text=''
     for result in response.results:
         # channel_tag to recognize which audio channel this result is for
-        print(u"Channel tag: {}".format(result.channel_tag))
+        #print(u"Channel tag: {}".format(result.channel_tag))
         # First alternative is the most probable result
         alternative = result.alternatives[0]
-        print(u"Transcript: {}".format(alternative.transcript))
-
-    
+        #print(u"Transcript: {}".format(alternative.transcript))
+        text=text+alternative.transcript
+        #print(text)
+    return text
 if __name__=="__main__":
     sample_recognize()

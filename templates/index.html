@@ -17,12 +17,20 @@
         <header>
           <h1>Voice Review</h1>
         </header>
+        <style>
+          textarea.ex1 {
+            margin-left: 610px;
+          }
+          </style>
         <main>
           <div class="controls">
             <button type="button" id="mic">Get Microphone</button>
             <button type="button" id="record" hidden>Record</button>
           </div>
           <ul id="recordings"></ul>
+          <div>
+          <textarea class="ex1" id="demo" cols="50" rows="5"></textarea>
+          </div>
         </main>
         <footer>
         </footer>
@@ -124,11 +132,16 @@
             fetch("/messages", {
             method: "post",
             body: blob
-            });
+            }).then(
+                    function(response) {
+                      return response.text().then(function(text) {
+                        document.getElementById("demo").innerHTML = text;
+                        
+                      });
+                      
+                      })
         }
-
-       
-
         </script>
+        
       </body>
     </html>
